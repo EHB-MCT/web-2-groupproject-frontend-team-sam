@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Challenge Manager</title>
 </head>
 
@@ -17,49 +18,59 @@
             <h2>Insert/Edit Challenge</h2>
             <h3>Insert New Challenge</h3>
             <form id="insertForm">
-                <div>
+                <div class="insertFormInput">
                     <label for="challengeName">Name:</label>
                     <input name="challengeName" placeholder="name" type="text">
                 </div>
-                <div>
+                <div class="insertFormInput">
                     <label for="challengePoints">Points:</label>
                     <input name="challengePoints" placeholder="points" type="text">
                 </div>
-                <div>
+                <div class="insertFormInput">
                     <label for="challengeCourse">Course:</label>
                     <input name="challengeCourse" placeholder="course, e.g. Web II" type="text">
                 </div>
-                <div>
+                <div class="insertFormInput">
                     <label for="challengeSession">Session:</label>
                     <input name="challengeSession" placeholder="session" type="text">
                 </div>
-                <button id="submitButton" type="submit">Add challenge</button>
+                <button class="submitButton" id="submitInsertButton" type="submit">Add challenge</button>
             </form>
             <h3>Edit Challenge</h3>
             <form id="editForm">
-                <div>
+                <div class="editFormInput">
                     <label for="challengeName">Name:</label>
                     <input name="challengeName" placeholder="name" type="text">
                 </div>
-                <div>
+                <div class="editFormInput">
                     <label for="challengePoints">Points:</label>
                     <input name="challengePoints" placeholder="points" type="text">
                 </div>
-                <div>
+                <div class="editFormInput">
                     <label for="challengeCourse">Course:</label>
                     <input name="challengeCourse" placeholder="course, e.g. Web II" type="text">
                 </div>
-                <div>
+                <div class="editFormInput">
                     <label for="challengeSession">Session:</label>
                     <input name="challengeSession" placeholder="session" type="text">
                 </div>
-                <button id="submitButton" type="submit">Add challenge</button>
+                <button class="submitButton" id="submitEditButton" type="submit">Edit challenge</button>
             </form>
         </section>
         <section>
             <h2>Challenges List</h2>
             <section>
-                <article>
+                <article class="listArticle">
+                    <h3>Challenge Name</h3>
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </article>
+                <article class="listArticle">
+                    <h3>Challenge Name</h3>
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </article>
+                <article class="listArticle">
                     <h3>Challenge Name</h3>
                     <button>Delete</button>
                     <button>Edit</button>
