@@ -31,7 +31,7 @@ window.onload = function () {
         fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/send`, {
                 method: "POST",
                 body: {
-                    "_id": "1548fddfg6fdg6f",
+                    "_id": "61ab91eey70548ec7660b44c",
                     "name": challengeName,
                     "points": challengePoints,
                     "course": challengeCourse,
