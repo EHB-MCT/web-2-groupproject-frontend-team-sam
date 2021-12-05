@@ -5,7 +5,7 @@ let challengesListHTML = "";
 
 fetchChallenges();
 
-function fetchChallenges (){
+function fetchChallenges() {
     console.log("Fetch!")
 
     fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges`)
@@ -13,13 +13,38 @@ function fetchChallenges (){
             return response.json();
         })
         .then(data => {
-            console.log(data);
-            console.log("dataList:", data)
             challengesDataList = data
         })
 }
 
 window.onload = function () {
+
+    document.getElementById('insertForm').addEventListener('submit', e => {
+        e.preventDefault('submit');
+        let challengeName = document.getElementById('insertName').value;
+        let challengePoints = document.getElementById('insertPoints').value;
+        let challengeCourse = document.getElementById('insertCourse').value;
+        let challengeSession = document.getElementById('insertSession').value;
+
+        console.log(challengeName, challengePoints, challengeCourse, challengeSession)
+
+        fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/send`, {
+                method: "POST",
+                body: {
+                    "_id": "1548fddfg6fdg6f",
+                    "name": challengeName,
+                    "points": challengePoints,
+                    "course": challengeCourse,
+                    "session": challengeSession
+                }
+            })
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                console.log('Success:', data);
+            })
+    })
 
     setTimeout(displayChallenges, 3000)
 

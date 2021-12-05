@@ -21,19 +21,20 @@
             <form id="insertForm">
                 <div class="insertFormInput">
                     <label for="challengeName">Name:</label>
-                    <input name="challengeName" placeholder="name" type="text">
+                    <input required id="insertName" name="challengeName" placeholder="name" type="text">
                 </div>
                 <div class="insertFormInput">
                     <label for="challengePoints">Points:</label>
-                    <input name="challengePoints" placeholder="points" type="text">
+                    <input required id="insertPoints" name="challengePoints" placeholder="points" type="text">
                 </div>
                 <div class="insertFormInput">
                     <label for="challengeCourse">Course:</label>
-                    <input name="challengeCourse" placeholder="course, e.g. Web II" type="text">
+                    <input required id="insertCourse" name="challengeCourse" placeholder="course, e.g. Web II"
+                        type="text">
                 </div>
                 <div class="insertFormInput">
                     <label for="challengeSession">Session:</label>
-                    <input name="challengeSession" placeholder="session" type="text">
+                    <input required id="insertSession" name="challengeSession" placeholder="session" type="text">
                 </div>
                 <button class="submitButton" id="submitInsertButton" type="submit">Add challenge</button>
             </form>
