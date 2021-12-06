@@ -21,6 +21,7 @@ window.onload = function () {
 
     document.getElementById('insertForm').addEventListener('submit', e => {
         e.preventDefault('submit');
+        let challengeId = "61ab91eey70548ec7660b44c";
         let challengeName = document.getElementById('insertName').value;
         let challengePoints = document.getElementById('insertPoints').value;
         let challengeCourse = document.getElementById('insertCourse').value;
@@ -30,13 +31,13 @@ window.onload = function () {
 
         fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/send`, {
                 method: "POST",
-                body: {
-                    "_id": "61ab91eey70548ec7660b44c",
-                    "name": challengeName,
-                    "points": challengePoints,
-                    "course": challengeCourse,
-                    "session": challengeSession
-                }
+                body: JSON.stringify({
+                    _id: challengeId,
+                    name: challengeName,
+                    points: challengePoints,
+                    course: challengeCourse,
+                    session: challengeSession
+                })
             })
             .then(response => {
                 return response.json()
