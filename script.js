@@ -47,6 +47,27 @@ window.onload = function () {
             })
     })
 
+
+    document.getElementById('deleteButton').addEventListener('click', e => {
+        e.preventDefault('submit');
+        let challengeId = e._id;
+        console.log(challengeId, "test")
+
+        fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/deletechallenges/${challengeId}`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+
+            })
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                console.log('Challenge succesfully removed:', data);
+            })
+    })
+
     setTimeout(displayChallenges, 3000)
 
     function displayChallenges() {
@@ -55,7 +76,7 @@ window.onload = function () {
         challengesDataList.forEach(e => {
             challengesListHTML += `<article id="${e._id}" class="listArticle">
             <h3>${e.name}</h3>
-            <button>Delete</button>
+            <button id="${e._id}" >Delete</button>
             <button>Edit</button>
         </article>`
         })
