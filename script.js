@@ -3,16 +3,34 @@
 let challengesDataList;
 let challengesListHTML = "";
 
-window.onload = function () {
+window.onload = async function () {
 
-    fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges`)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            challengesDataList = data
-            console.log("Fetch!", data)
-        })
+    await first();
+
+    async function first() {
+        await fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges`)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                challengesDataList = data;
+                console.log("Fetch!", data);
+                console.log(challengesDataList.length);
+            })
+
+        console.log('Loaded!');
+
+        for (let e = 0; e < challengesDataList.length; e++) {
+            challengesListHTML += `<article id="${challengesDataList[e]._id}" class="listArticle">
+            <div class="dataDelete">
+            <h3>${challengesDataList[e].name} id = ${challengesDataList[e]._id}</h3>
+            <button id="${challengesDataList[e]._id}" class="dataDelete" >Delete</button>
+            <button>Edit</button>
+            </div>
+        </article>`
+        }
+        document.getElementById("challengesList").innerHTML = challengesListHTML;
+    }
 
 
     document.getElementById('insertForm').addEventListener('submit', e => {
@@ -40,29 +58,11 @@ window.onload = function () {
             })
             .then(data => {
                 console.log(data);
+                if (data == undefined) {
+                    location.reload();
+                }
             });
-    })
-
-
-    document.getElementById('deleteButton').addEventListener('click', e => {
-        e.preventDefault('submit');
-        let challengeId = e._id;
-        console.log(challengeId, "test")
-
-        fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/deletechallenges/${challengeId}`, {
-                method: "DELETE",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                console.log('Challenge succesfully removed:', data);
-            })
-    })
-
+    });
 
     document.getElementById('editForm').addEventListener('submit', e => {
         e.preventDefault('submit');
@@ -90,21 +90,38 @@ window.onload = function () {
             })
             .then(data => {
                 console.log(data);
+                if (data == undefined) {
+                    location.reload();
+                }
             });
     })
 
-    setTimeout(displayChallenges, 3000)
+    second();
 
-    function displayChallenges() {
-        console.log('Loaded!');
+    function second() {
+        let deleteData = document.getElementsByClassName("dataDelete");
+        for (let i = 0; i < deleteData.length; i++) {
+            deleteData[i].addEventListener("click", e => {
+                e.preventDefault();
+                let challengeId = e.path[0].id;
+                console.log(challengeId);
 
-        challengesDataList.forEach(e => {
-            challengesListHTML += `<article id="${e._id}" class="listArticle">
-            <h3>${e.name} id = ${e._id}</h3>
-            <button id="${e._id}" >Delete</button>
-            <button>Edit</button>
-        </article>`
-        })
-        document.getElementById("challengesList").innerHTML = challengesListHTML;
+                fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/${challengeId}`, {
+                        method: "DELETE",
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    })
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(data => {
+                        console.log('Challenge succesfully removed:', data);
+                        if (data) {
+                            location.reload();
+                        }
+                    })
+            })
+        }
     }
 }
