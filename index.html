@@ -41,20 +41,24 @@
             <h3>Edit Challenge</h3>
             <form id="editForm">
                 <div class="editFormInput">
+                    <label for="challengeId">Id:</label>
+                    <input id="cId" name="challengeId" placeholder="Id" type="text">
+                </div>
+                <div class="editFormInput">
                     <label for="challengeName">Name:</label>
-                    <input name="challengeName" placeholder="name" type="text">
+                    <input id="cName" name="challengeName" placeholder="name" type="text">
                 </div>
                 <div class="editFormInput">
                     <label for="challengePoints">Points:</label>
-                    <input name="challengePoints" placeholder="points" type="text">
+                    <input id="cPoints" name="challengePoints" placeholder="points" type="text">
                 </div>
                 <div class="editFormInput">
                     <label for="challengeCourse">Course:</label>
-                    <input name="challengeCourse" placeholder="course, e.g. Web II" type="text">
+                    <input id="cCourse" name="challengeCourse" placeholder="course, e.g. Web II" type="text">
                 </div>
                 <div class="editFormInput">
                     <label for="challengeSession">Session:</label>
-                    <input name="challengeSession" placeholder="session" type="text">
+                    <input id="cSession" name="challengeSession" placeholder="session" type="text">
                 </div>
                 <button class="submitButton" id="submitEditButton" type="submit">Edit challenge</button>
             </form>

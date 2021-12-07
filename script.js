@@ -17,8 +17,6 @@ window.onload = function () {
 
     document.getElementById('insertForm').addEventListener('submit', e => {
         e.preventDefault('submit');
-
-        let challengeId = "3127836127836812";
         let challengeName = document.getElementById('insertName').value;
         let challengePoints = document.getElementById('insertPoints').value;
         let challengeCourse = document.getElementById('insertCourse').value;
@@ -64,6 +62,52 @@ window.onload = function () {
                 console.log('Challenge succesfully removed:', data);
             })
     })
+
+
+    document.getElementById('editForm').addEventListener('submit', e =>{
+        e.preventDefault('submit');
+        let challengeName = document.getElementById('cName').value;
+        let challengePoints = document.getElementById('cPoints').value;
+        let challengeCourse = document.getElementById('cCourse').value;
+        let challengeSession = document.getElementById('cSession').value;
+
+        const chUpdate = {
+            name: challengeName,
+            points: challengePoints,
+            course: challengeCourse,
+            session: challengeSession
+        }
+        console.log(chUpdate)
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     setTimeout(displayChallenges, 3000)
 
