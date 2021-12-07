@@ -18,32 +18,31 @@ window.onload = function () {
     document.getElementById('insertForm').addEventListener('submit', e => {
         e.preventDefault('submit');
 
-        let challengeId = "61ab91eey70548ec7660b44c";
+        let challengeId = "3127836127836812";
         let challengeName = document.getElementById('insertName').value;
         let challengePoints = document.getElementById('insertPoints').value;
         let challengeCourse = document.getElementById('insertCourse').value;
         let challengeSession = document.getElementById('insertSession').value;
-        fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/send`, {
+
+        const ch = {
+            name: challengeName,
+            points: challengePoints,
+            course: challengeCourse,
+            session: challengeSession
+        }
+        console.log(ch)
+        fetch("https://web2-fullstack-teamwork.herokuapp.com/challenges/send", {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    id: challengeId,
-                    name: challengeName,
-                    points: challengePoints,
-                    course: challengeCourse,
-                    session: challengeSession
-                }),
-
-            })
-            .then(response => {
-                return response.json()
+                body: JSON.stringify(ch)
+            }).then(res => {
+                res.json()
             })
             .then(data => {
-                console.log('Success:', data);
-            })
-
+                console.log(data);
+            });
     })
 
 
@@ -57,7 +56,6 @@ window.onload = function () {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-
             })
             .then(response => {
                 return response.json()
