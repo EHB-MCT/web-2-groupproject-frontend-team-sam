@@ -17,14 +17,12 @@ window.onload = function () {
 
     document.getElementById('insertForm').addEventListener('submit', e => {
         e.preventDefault('submit');
+
         let challengeId = "61ab91eey70548ec7660b44c";
         let challengeName = document.getElementById('insertName').value;
         let challengePoints = document.getElementById('insertPoints').value;
         let challengeCourse = document.getElementById('insertCourse').value;
         let challengeSession = document.getElementById('insertSession').value;
-
-        console.log(challengeName, challengePoints, challengeCourse, challengeSession)
-
         fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/send`, {
                 method: "POST",
                 headers: {
@@ -45,6 +43,7 @@ window.onload = function () {
             .then(data => {
                 console.log('Success:', data);
             })
+
     })
 
 
