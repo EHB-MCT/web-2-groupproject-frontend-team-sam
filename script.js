@@ -64,7 +64,7 @@ window.onload = function () {
     })
 
 
-    document.getElementById('editForm').addEventListener('submit', e =>{
+    document.getElementById('editForm').addEventListener('submit', e => {
         e.preventDefault('submit');
         let challengeName = document.getElementById('cName').value;
         let challengePoints = document.getElementById('cPoints').value;
@@ -80,35 +80,6 @@ window.onload = function () {
         console.log(chUpdate)
     })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     setTimeout(displayChallenges, 3000)
 
     function displayChallenges() {
@@ -116,7 +87,7 @@ window.onload = function () {
 
         challengesDataList.forEach(e => {
             challengesListHTML += `<article id="${e._id}" class="listArticle">
-            <h3>${e.name}</h3>
+            <h3>${e.name} id = ${e._id}</h3>
             <button id="${e._id}" >Delete</button>
             <button>Edit</button>
         </article>`
