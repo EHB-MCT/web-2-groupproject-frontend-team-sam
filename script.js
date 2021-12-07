@@ -64,50 +64,34 @@ window.onload = function () {
     })
 
 
-    document.getElementById('editForm').addEventListener('submit', e =>{
+    document.getElementById('editForm').addEventListener('submit', e => {
         e.preventDefault('submit');
+        let challengeId = document.getElementById("cId").value;
         let challengeName = document.getElementById('cName').value;
         let challengePoints = document.getElementById('cPoints').value;
         let challengeCourse = document.getElementById('cCourse').value;
         let challengeSession = document.getElementById('cSession').value;
 
         const chUpdate = {
-            name: challengeName,
-            points: challengePoints,
-            course: challengeCourse,
-            session: challengeSession
+            "_id": challengeId,
+            "name": challengeName,
+            "points": challengePoints,
+            "course": challengeCourse,
+            "session": challengeSession
         }
-        console.log(chUpdate)
+        fetch(`https://web2-fullstack-teamwork.herokuapp.com/challenges/${challengeId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(chUpdate)
+            }).then(res => {
+                res.json()
+            })
+            .then(data => {
+                console.log(data);
+            });
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     setTimeout(displayChallenges, 3000)
 
