@@ -1,4 +1,4 @@
-'Use strict';
+"Use strict";
 
 let challengesDataList;
 let challengesListHTML = "";
